@@ -44,9 +44,10 @@
                     <f:facet name="header">
                         <h:outputText value="#{msg.numberOfPeople}" />
                     </f:facet>
-                    #{movie.numberOfPeople}
+                    <h:outputText value="#{movie.numberOfPeople}"/>
                 </h:column>
             </h:dataTable>
+            <h:commandButton value="#{msg.backToHome}" action="index"/>
         </h:form>
     </h:body>
 </html>
