@@ -2,7 +2,7 @@ package ch.hearc.ig.odi.moviemanager.service;
 
 import ch.hearc.ig.odi.moviemanager.business.Movie;
 import ch.hearc.ig.odi.moviemanager.business.Person;
-import ch.hearc.ig.odi.moviemanager.exception.UniqueException;
+import ch.hearc.ig.odi.moviemanager.exception.DuplicateElementException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -74,7 +74,7 @@ public class Services implements Serializable{
             people.get(6l).addMovie(movies.get(9l));
             people.get(6l).addMovie(movies.get(1l));
             people.get(6l).addMovie(movies.get(2l));
-        } catch (UniqueException ex) {
+        } catch (DuplicateElementException ex) {
             // Ne devrait pas arriver
         }
     }
