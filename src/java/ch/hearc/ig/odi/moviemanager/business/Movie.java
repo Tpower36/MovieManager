@@ -5,6 +5,7 @@
  */
 package ch.hearc.ig.odi.moviemanager.business;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -21,8 +22,12 @@ public class Movie {
         this.id = id;
         this.name = name;
         this.producer = producer;
+        people = new HashMap();
     }
 
+    public int getNumberOfPeople(){
+        return people.size();
+    }
     public Long getId() {
         return id;
     }

@@ -6,6 +6,7 @@
 package ch.hearc.ig.odi.moviemanager.business;
 
 import ch.hearc.ig.odi.moviemanager.exception.DuplicateElementException;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -22,6 +23,7 @@ public class Person {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
+        movies = new HashMap();
     }
     
     /**
@@ -33,7 +35,7 @@ public class Person {
      * @throws DuplicateElementException
      */
     public void addMovie(Movie movie) throws DuplicateElementException{
-        if(movies.get(movie.getId()).getPeople().containsKey(id)){
+        if(!movie.getPeople().containsKey(id)){
             movies.put(movie.getId(), movie);
             movie.getPeople().put(id, this);
         }
@@ -42,7 +44,13 @@ public class Person {
         }
         
     }
-
+    /**
+     * Cette méthode retourne le nombre de films vu par la personne
+     * @return le nombre de films vus
+     */
+    public int getNumberOfMovies(){
+        return movies.size();
+    }
     public Long getId() {
         return id;
     }
