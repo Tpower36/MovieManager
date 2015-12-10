@@ -15,4 +15,41 @@
             <var>msg</var>
         </resource-bundle>
     </application>
+    
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{movieDetailsBean.recupMovie(movie)}</from-action>          
+            <from-outcome>0</from-outcome>
+            <to-view-id>/movieDetails.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{movieDetailsBean.recupMovie(movie)}</from-action>          
+            <from-outcome>1</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{personDetailsBean.recupPerson(person)}</from-action>          
+            <from-outcome>0</from-outcome>
+            <to-view-id>/personDetails.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{personDetailsBean.recupPerson(person)}</from-action>          
+            <from-outcome>1</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/movieDetails.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{personDetailsBean.recupPerson(person)}</from-action>          
+            <from-outcome>0</from-outcome>
+            <to-view-id>/personDetails.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{personDetailsBean.recupPerson(person)}</from-action>          
+            <from-outcome>1</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
 </faces-config>
