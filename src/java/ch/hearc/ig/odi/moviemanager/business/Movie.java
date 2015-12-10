@@ -5,7 +5,9 @@
  */
 package ch.hearc.ig.odi.moviemanager.business;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -25,6 +27,18 @@ public class Movie {
         people = new HashMap();
     }
 
+    /**
+     * Retourne la liste des personnes convertie en ArrayList
+     * @return une ArrayList de personnes
+     */
+    public List getPeopleList(){
+        return new ArrayList(getPeople().values());
+    }
+    
+    /**
+     * Retourne le nombre de personnes ayant vues le film
+     * @return le nombre de personnes ayant vues le film
+     */
     public int getNumberOfPeople(){
         return people.size();
     }

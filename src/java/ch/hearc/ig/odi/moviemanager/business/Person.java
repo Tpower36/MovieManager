@@ -6,7 +6,9 @@
 package ch.hearc.ig.odi.moviemanager.business;
 
 import ch.hearc.ig.odi.moviemanager.exception.DuplicateElementException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -44,6 +46,14 @@ public class Person {
         }
         
     }
+    /**
+     * Cette méthode retourne la liste des films convertie en ArrayList
+     * @return Une ArrayList de films.
+     */
+    public List getMoviesList(){
+        return new ArrayList(getMovies().values());
+    }
+    
     /**
      * Cette méthode retourne le nombre de films vu par la personne
      * @return le nombre de films vus
