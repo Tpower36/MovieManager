@@ -96,4 +96,24 @@ public class Services implements Serializable{
     public List<Movie> getMoviesList(){
         return new ArrayList(movies.values());
     }
+    
+    /**
+     * Cette méthode va permettre de sauvegarder un film dans la liste
+     * @param id L'id du film
+     * @param name Le nom du film
+     * @param producer Le producteur du film
+     */
+    public void saveMovie(Long id, String name, String producer) throws DuplicateElementException{
+        if(movies.containsKey(id)){
+            throw new DuplicateElementException();
+        }
+        movies.put(id, new Movie(id, name, producer));
+    }
+    
+    public void savePerson(Long id, String firstname, String lastname) throws DuplicateElementException{
+        if(people.containsKey(id)){
+            throw new DuplicateElementException();
+        }
+        people.put(id, new Person(id, firstname,lastname));
+    }
 }
