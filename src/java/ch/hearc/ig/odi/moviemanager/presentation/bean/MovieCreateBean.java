@@ -7,10 +7,7 @@ package ch.hearc.ig.odi.moviemanager.presentation.bean;
 
 import ch.hearc.ig.odi.moviemanager.exception.DuplicateElementException;
 import ch.hearc.ig.odi.moviemanager.service.Services;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.inject.Named;
-import javax.enterprise.context.Dependent;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
@@ -18,34 +15,31 @@ import javax.inject.Inject;
  *
  * @author thierry.hubmann
  */
-@Named(value = "personCreateBean")
+@Named(value = "movieCreateBean")
 @RequestScoped
-public class PersonCreateBean {
+public class MovieCreateBean {
 
     @Inject Services services;
     private Long id;
-    private String firstname;
-    private String lastname;
-    
+    private String name;
+    private String producer;
     /**
-     * Creates a new instance of PersonCreateBean
+     * Creates a new instance of MovieCreateBean
      */
-    public PersonCreateBean() {
+    public MovieCreateBean() {
     }
 
     /**
-     * Cette méthode récupère les éléments entrés dans le formulaire et ajoute
-     * une personne en appelant la méthode save de la classe de services.
+     * Cette méthode appelle la méthode de service pour ajouter un film
      * @return un code d'erreur
      */
-    public int createPerson(){
+    public int createMovie(){
         try {
-            services.savePerson(id, firstname, lastname);
+            services.saveMovie(id, name, producer);
             return 0;
         } catch (DuplicateElementException ex) {
             return 1;
         }
-       
     }
     public Long getId() {
         return id;
@@ -55,21 +49,22 @@ public class PersonCreateBean {
         this.id = id;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getName() {
+        return name;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getProducer() {
+        return producer;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setProducer(String producer) {
+        this.producer = producer;
     }
+    
     
     
 }

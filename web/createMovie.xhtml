@@ -6,7 +6,45 @@
         <title>Create movie</title>
     </h:head>
     <h:body>
-        Hello from Facelets
+        <h:form id="form">
+            <h1><h:outputText value="#{msg.createMovie}"/></h1>
+
+            <p>
+                <h:outputText value="#{msg.id}"/>
+                &nbsp;
+                <h:inputText value="#{movieCreateBean.id}"
+                             label="Number"
+                             size="30"                           
+                             required="true" requiredMessage="#{msg.idRequired}"
+                             />
+                            
+            </p>
+            <p>
+                <h:outputText value="#{msg.movieName}"/>
+                &nbsp;
+                <h:inputText value="#{movieCreateBean.name}"
+                             label="Name"
+                             size="50"
+                             required="true" requiredMessage="#{msg.nameRequired}"
+                             />
+            </p>
+            <p>
+                <h:outputText value="#{msg.producer}"/>
+                &nbsp;
+                <h:inputText value="#{movieCreateBean.producer}"
+                             label="Lastname"
+                             size="50"
+                             required="true" requiredMessage="#{msg.producerRequired}"
+                             />
+
+            </p>
+            
+            <h:commandButton value="#{msg.create}" type="submit" action="#{movieCreateBean.createMovie()}"/>
+            <h:commandButton value="#{msg.init}" type="reset"/>
+            <h:commandButton value="#{msg.cancel}" action="index"/>
+            
+            <h:messages errorStyle="color:red"/>
+        </h:form>
     </h:body>
 </html>
 

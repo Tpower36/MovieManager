@@ -56,6 +56,11 @@
             <to-view-id>/createPerson.xhtml</to-view-id>
             <redirect />
         </navigation-case>
+        <navigation-case>
+            <from-outcome>createMovie</from-outcome>
+            <to-view-id>/createMovie.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
     </navigation-rule>
     
     <navigation-rule>
@@ -100,6 +105,21 @@
         </navigation-case>
         <navigation-case>
             <from-action>#{personCreateBean.createPerson()}</from-action>          
+            <from-outcome>1</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/createMovie.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{movieCreateBean.createMovie()}</from-action>          
+            <from-outcome>0</from-outcome>
+            <to-view-id>/createMovieOk.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{movieCreateBean.createMovie()}</from-action>          
             <from-outcome>1</from-outcome>
             <to-view-id>/index.xhtml</to-view-id>
             <redirect />
