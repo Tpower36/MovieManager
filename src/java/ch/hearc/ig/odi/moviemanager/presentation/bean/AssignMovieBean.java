@@ -10,13 +10,9 @@ import ch.hearc.ig.odi.moviemanager.business.Person;
 import ch.hearc.ig.odi.moviemanager.exception.DuplicateElementException;
 import ch.hearc.ig.odi.moviemanager.service.Services;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.inject.Named;
-import javax.enterprise.context.Dependent;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
 /**
@@ -24,11 +20,13 @@ import javax.inject.Inject;
  * @author thierry.hubmann
  */
 @Named(value = "assignMovieBean")
-@Dependent
+@RequestScoped
 public class AssignMovieBean {
 
     @Inject Services services;
     private Movie movieToAssign;
+    private String test;
+   
     
     /**
      * Creates a new instance of AssignMovieBean
@@ -73,7 +71,17 @@ public class AssignMovieBean {
 
     public void setMovieToAssign(Movie movieToAssign) {
         this.movieToAssign = movieToAssign;
+    }  
+
+    public String getTest() {
+        return test;
     }
+
+    public void setTest(String test) {
+        this.test = test;
+    }
+    
+    
     
     
 }

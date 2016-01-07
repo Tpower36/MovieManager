@@ -47,15 +47,19 @@
                     <h:outputText value="#{movie.numberOfPeople}"/>
                 </h:column>
             </h:dataTable>
-            <h:outputText value="#{msg.affectMovie}" />
-            <h:selectOneMenu id="lovMovie" value="#{assignMovieBean.movieToAssign}" >
+            <h:inputText value="TEST" />
+            <h:outputText value="#{assignMovieBean.test}" />
+      
+            <h:selectOneMenu value="#{assignMovieBean.movieToAssign}" >
                 <f:converter binding="#{moviesLovConverter}" />
                 <f:selectItems value="#{assignMovieBean.getUnseenMovies(personDetailsBean.person)}" 
                               var="mov"
                               itemLabel="#{mov.name}"/>
-
             </h:selectOneMenu>
+            
+             <h:commandButton value="#{msg.affect}" type="submit" action ="#{assignMovieBean.assignMovie(personDetailsBean.person)}" />
             <br />
+           
             <h:commandButton value="#{msg.backToHome}" action="index"/>
         </h:form>
     </h:body>
