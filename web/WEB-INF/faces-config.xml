@@ -93,6 +93,7 @@
             <to-view-id>/index.xhtml</to-view-id>
             <redirect />
         </navigation-case>
+        
         <navigation-case>
             <from-action>#{assignMovieBean.assignMovie(personDetailsBean.person)}</from-action>          
             <from-outcome>0</from-outcome>
@@ -101,6 +102,19 @@
         </navigation-case>
         <navigation-case>
             <from-action>#{assignMovieBean.assignMovie(personDetailsBean.person)}</from-action>          
+            <from-outcome>1</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        
+        <navigation-case>
+            <from-action>#{unassignMovieBean.unassignMovie(personDetailsBean.person, movie)}</from-action>          
+            <from-outcome>0</from-outcome>
+            <to-view-id>/personDetails.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{unassignMovieBean.unassignMovie(personDetailsBean.person, movie)}</from-action>          
             <from-outcome>1</from-outcome>
             <to-view-id>/index.xhtml</to-view-id>
             <redirect />

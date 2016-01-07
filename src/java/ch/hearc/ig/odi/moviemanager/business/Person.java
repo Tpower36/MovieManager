@@ -6,6 +6,7 @@
 package ch.hearc.ig.odi.moviemanager.business;
 
 import ch.hearc.ig.odi.moviemanager.exception.DuplicateElementException;
+import ch.hearc.ig.odi.moviemanager.exception.ElementNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -45,6 +46,21 @@ public class Person {
             throw new DuplicateElementException("La personne à déjà vu ce film");
         }
         
+    }
+    
+    /**
+     * Cette méthode va supprimer un film de la liste des films vus par cette personne
+     * @param movie Le film à supprimer
+     * @throws ElementNotFoundException 
+     */
+    public void unassignMovie(Movie movie) throws ElementNotFoundException{
+        if(movie.getPeople().containsKey(id)){
+            movies.remove(movie.getId());
+            movie.getPeople().remove(id);
+        }
+        else{
+            throw new ElementNotFoundException("La personne n'a pas vue ce film");
+        }
     }
     /**
      * Cette méthode retourne la liste des films convertie en ArrayList

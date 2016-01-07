@@ -25,7 +25,7 @@ public class AssignMovieBean {
 
     @Inject Services services;
     private Movie movieToAssign;
-    private String test;
+   
    
     
     /**
@@ -72,16 +72,5 @@ public class AssignMovieBean {
     public void setMovieToAssign(Movie movieToAssign) {
         this.movieToAssign = movieToAssign;
     }  
-
-    public String getTest() {
-        return test;
-    }
-
-    public void setTest(String test) {
-        this.test = test;
-    }
-    
-    
-    
-    
+  
 }

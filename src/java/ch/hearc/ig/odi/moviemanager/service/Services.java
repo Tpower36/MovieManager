@@ -3,6 +3,7 @@ package ch.hearc.ig.odi.moviemanager.service;
 import ch.hearc.ig.odi.moviemanager.business.Movie;
 import ch.hearc.ig.odi.moviemanager.business.Person;
 import ch.hearc.ig.odi.moviemanager.exception.DuplicateElementException;
+import ch.hearc.ig.odi.moviemanager.exception.ElementNotFoundException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -112,6 +113,7 @@ public class Services implements Serializable{
      * @param id L'id du film
      * @param name Le nom du film
      * @param producer Le producteur du film
+     * @throws ch.hearc.ig.odi.moviemanager.exception.DuplicateElementException
      */
     public void saveMovie(Long id, String name, String producer) throws DuplicateElementException{
         if(movies.containsKey(id)){
@@ -141,5 +143,15 @@ public class Services implements Serializable{
      */
     public Movie getMovieById(Long id){
         return movies.get(id);
+    }
+    
+    /**
+     * Service permettant de desasigner un film d'une personne
+     * @param person la personne
+     * @param movie le film à enlever de la liste
+     * @throws ch.hearc.ig.odi.moviemanager.exception.ElementNotFoundException
+     */
+    public void unassignMovie(Person person, Movie movie) throws ElementNotFoundException{
+        person.unassignMovie(movie);
     }
 }
