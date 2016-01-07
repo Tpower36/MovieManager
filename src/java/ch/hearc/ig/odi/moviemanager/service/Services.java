@@ -98,6 +98,16 @@ public class Services implements Serializable{
     }
     
     /**
+     * Ce service permet d'assigner un film à une personne
+     * @param movie le film vu
+     * @param person la personne à laquelle on souhaite assigner le film
+     * @throws DuplicateElementException 
+     */
+    public void assignMovieToPerson(Movie movie, Person person) throws DuplicateElementException{
+        person.addMovie(movie);
+    }
+    
+    /**
      * Cette méthode va permettre de sauvegarder un film dans la liste
      * @param id L'id du film
      * @param name Le nom du film
@@ -110,10 +120,26 @@ public class Services implements Serializable{
         movies.put(id, new Movie(id, name, producer));
     }
     
+    /**
+     * Permet d'ajouter une nouvelle personne
+     * @param id
+     * @param firstname
+     * @param lastname
+     * @throws DuplicateElementException 
+     */
     public void savePerson(Long id, String firstname, String lastname) throws DuplicateElementException{
         if(people.containsKey(id)){
             throw new DuplicateElementException();
         }
         people.put(id, new Person(id, firstname,lastname));
+    }
+    
+    /**
+     * Service retournant un film en spécifiant sont ID
+     * @param id l'id du film
+     * @return le film
+     */
+    public Movie getMovieById(Long id){
+        return movies.get(id);
     }
 }

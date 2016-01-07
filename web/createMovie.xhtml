@@ -6,9 +6,8 @@
         <title>Create movie</title>
     </h:head>
     <h:body>
+        <h1><h:outputText value="#{msg.createMovie}"/></h1>
         <h:form id="form">
-            <h1><h:outputText value="#{msg.createMovie}"/></h1>
-
             <p>
                 <h:outputText value="#{msg.id}"/>
                 &nbsp;
@@ -17,7 +16,7 @@
                              size="30"                           
                              required="true" requiredMessage="#{msg.idRequired}"
                              />
-                            
+
             </p>
             <p>
                 <h:outputText value="#{msg.movieName}"/>
@@ -38,11 +37,11 @@
                              />
 
             </p>
-            
+
             <h:commandButton value="#{msg.create}" type="submit" action="#{movieCreateBean.createMovie()}"/>
             <h:commandButton value="#{msg.init}" type="reset"/>
             <h:commandButton value="#{msg.cancel}" action="index"/>
-            
+
             <h:messages errorStyle="color:red"/>
         </h:form>
     </h:body>

@@ -16,9 +16,9 @@
             <h:outputLabel value="#{msg.lastname} : " />
             <h:outputText value="#{personDetailsBean.person.lastname}" />
         </h:panelGrid>
-        
+
         <h2><h:outputText value="#{msg['personDetails.moviesList']}" /></h2>
-        
+
         <h:form>
             <h:dataTable value="#{personDetailsBean.person.moviesList}" var="movie">
                 <h:column>
@@ -47,6 +47,15 @@
                     <h:outputText value="#{movie.numberOfPeople}"/>
                 </h:column>
             </h:dataTable>
+            <h:outputText value="#{msg.affectMovie}" />
+            <h:selectOneMenu id="lovMovie" value="#{assignMovieBean.movieToAssign}" >
+                <f:converter binding="#{moviesLovConverter}" />
+                <f:selectItems value="#{assignMovieBean.getUnseenMovies(personDetailsBean.person)}" 
+                              var="mov"
+                              itemLabel="#{mov.name}"/>
+
+            </h:selectOneMenu>
+            <br />
             <h:commandButton value="#{msg.backToHome}" action="index"/>
         </h:form>
     </h:body>
