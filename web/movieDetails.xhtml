@@ -2,53 +2,58 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Movies details</title>
     </h:head>
     <h:body>
-        <h1><h:outputText value="#{msg.movieDetails}"/></h1>
-        <h:panelGrid border="0" columns="2">
-            <h:outputLabel value="#{msg.id} : " />
-            <h:outputText value="#{movieDetailsBean.movie.id}" />
-            <h:outputLabel value="#{msg.movieName} : " />
-            <h:outputText value="#{movieDetailsBean.movie.name}" />
-            <h:outputLabel value="#{msg.producer} : " />
-            <h:outputText value="#{movieDetailsBean.movie.producer}" />
-        </h:panelGrid>
-        
-        <h2><h:outputText value="#{msg['movieDetails.peopleList']}" /></h2>
-        
-        <h:form>
-            <h:dataTable value="#{movieDetailsBean.movie.peopleList}" var="person">
-                <h:column>
+        <ui:composition template="movieManagerTemplate.xhtml">
+            <ui:define name="top"><h:outputText value="#{msg.movieDetails}"/></ui:define>
+            <ui:define name="content">
+                <h:panelGrid border="0" columns="2">
+                    <h:outputLabel value="#{msg.id} : " />
+                    <h:outputText value="#{movieDetailsBean.movie.id}" />
+                    <h:outputLabel value="#{msg.movieName} : " />
+                    <h:outputText value="#{movieDetailsBean.movie.name}" />
+                    <h:outputLabel value="#{msg.producer} : " />
+                    <h:outputText value="#{movieDetailsBean.movie.producer}" />
+                </h:panelGrid>
 
-                    <f:facet name="header">
-                        <h:outputText value="#{msg.id}" />
-                    </f:facet>
-                    <h:outputText value="#{person.id}" />
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="#{msg.firstname}" />
-                    </f:facet>
-                    <h:commandLink value="#{person.firstname}" action ="#{personDetailsBean.recupPerson(person)}"/>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="#{msg.lastname}" />
-                    </f:facet>
-                    <h:commandLink value="#{person.lastname}" action ="#{personDetailsBean.recupPerson(person)}"/>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="#{msg.numberOfMovies}" />
-                    </f:facet>
-                    <h:outputText value="#{person.numberOfMovies}"/>
-                </h:column>
-            </h:dataTable>
-            <h:commandButton value="#{msg.backToHome}" action="index" />
-        </h:form>
+                <h2><h:outputText value="#{msg['movieDetails.peopleList']}" /></h2>
+
+                <h:form>
+                    <h:dataTable value="#{movieDetailsBean.movie.peopleList}" var="person">
+                        <h:column>
+
+                            <f:facet name="header">
+                                <h:outputText value="#{msg.id}" />
+                            </f:facet>
+                            <h:outputText value="#{person.id}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{msg.firstname}" />
+                            </f:facet>
+                            <h:commandLink value="#{person.firstname}" action ="#{personDetailsBean.recupPerson(person)}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{msg.lastname}" />
+                            </f:facet>
+                            <h:commandLink value="#{person.lastname}" action ="#{personDetailsBean.recupPerson(person)}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{msg.numberOfMovies}" />
+                            </f:facet>
+                            <h:outputText value="#{person.numberOfMovies}"/>
+                        </h:column>
+                    </h:dataTable>
+                    <h:commandButton value="#{msg.backToHome}" action="index" />
+                </h:form>
+            </ui:define>
+        </ui:composition>
     </h:body>
 </html>
 

@@ -2,69 +2,74 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Person details</title>
     </h:head>
     <h:body>
-        <h1><h:outputText value="#{msg.personDetails}"/></h1>
-        <h:panelGrid border="0" columns="2">
-            <h:outputLabel value="#{msg.id} : " />
-            <h:outputText value="#{personDetailsBean.person.id}" />
-            <h:outputLabel value="#{msg.firstname} : " />
-            <h:outputText value="#{personDetailsBean.person.firstname}" />
-            <h:outputLabel value="#{msg.lastname} : " />
-            <h:outputText value="#{personDetailsBean.person.lastname}" />
-        </h:panelGrid>
+        <ui:composition template="movieManagerTemplate.xhtml">
+            <ui:define name="top"><h:outputText value="#{msg.personDetails}"/></ui:define>
+            <ui:define name="content">
+                <h:panelGrid border="0" columns="2">
+                    <h:outputLabel value="#{msg.id} : " />
+                    <h:outputText value="#{personDetailsBean.person.id}" />
+                    <h:outputLabel value="#{msg.firstname} : " />
+                    <h:outputText value="#{personDetailsBean.person.firstname}" />
+                    <h:outputLabel value="#{msg.lastname} : " />
+                    <h:outputText value="#{personDetailsBean.person.lastname}" />
+                </h:panelGrid>
 
-        <h2><h:outputText value="#{msg['personDetails.moviesList']}" /></h2>
+                <h2><h:outputText value="#{msg['personDetails.moviesList']}" /></h2>
 
-        <h:form>
-            <h:dataTable value="#{personDetailsBean.person.moviesList}" var="movie">
-                <h:column>
+                <h:form>
+                    <h:dataTable value="#{personDetailsBean.person.moviesList}" var="movie">
+                        <h:column>
 
-                    <f:facet name="header">
-                        <h:outputText value="#{msg.id}" />
-                    </f:facet>
-                    <h:outputText value="#{movie.id}" />
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="#{msg.movieName}" />
-                    </f:facet>
-                    <h:commandLink value="#{movie.name}" action ="#{movieDetailsBean.recupMovie(movie)}"/>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="#{msg.producer}" />
-                    </f:facet>
-                    <h:commandLink value="#{movie.producer}" action ="#{movieDetailsBean.recupMovie(movie)}"/>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="#{msg.numberOfPeople}" />
-                    </f:facet>
-                    <h:outputText value="#{movie.numberOfPeople}"/>
-                </h:column>
-                <h:column>         
-                    <h:commandButton type="submit" image="/movieManager/faces/javax.faces.resource/img/delete.png" action ="#{unassignMovieBean.unassignMovie(personDetailsBean.person, movie)}"/>
-                     
-                </h:column>
-            </h:dataTable>
+                            <f:facet name="header">
+                                <h:outputText value="#{msg.id}" />
+                            </f:facet>
+                            <h:outputText value="#{movie.id}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{msg.movieName}" />
+                            </f:facet>
+                            <h:commandLink value="#{movie.name}" action ="#{movieDetailsBean.recupMovie(movie)}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{msg.producer}" />
+                            </f:facet>
+                            <h:commandLink value="#{movie.producer}" action ="#{movieDetailsBean.recupMovie(movie)}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{msg.numberOfPeople}" />
+                            </f:facet>
+                            <h:outputText value="#{movie.numberOfPeople}"/>
+                        </h:column>
+                        <h:column>         
+                            <h:commandButton type="submit" image="/movieManager/faces/javax.faces.resource/img/delete.png" action ="#{unassignMovieBean.unassignMovie(personDetailsBean.person, movie)}"/>
+
+                        </h:column>
+                    </h:dataTable>
 
 
-            <h:selectOneMenu value="#{assignMovieBean.movieToAssign}" >
-                <f:converter binding="#{moviesLovConverter}" />
-                <f:selectItems value="#{assignMovieBean.getUnseenMovies(personDetailsBean.person)}" 
-                               var="mov"
-                               itemLabel="#{mov.name}"/>
-            </h:selectOneMenu>
+                    <h:selectOneMenu value="#{assignMovieBean.movieToAssign}" >
+                        <f:converter binding="#{moviesLovConverter}" />
+                        <f:selectItems value="#{assignMovieBean.getUnseenMovies(personDetailsBean.person)}" 
+                                       var="mov"
+                                       itemLabel="#{mov.name}"/>
+                    </h:selectOneMenu>
 
-            <h:commandButton value="#{msg.affect}" type="submit" action ="#{assignMovieBean.assignMovie(personDetailsBean.person)}" />
-            <br />
+                    <h:commandButton value="#{msg.affect}" type="submit" action ="#{assignMovieBean.assignMovie(personDetailsBean.person)}" />
+                    <br />
 
-            <h:commandButton value="#{msg.backToHome}" action="index"/>
-        </h:form>
+                    <h:commandButton value="#{msg.backToHome}" action="index"/>
+                </h:form>
+            </ui:define>
+        </ui:composition>
     </h:body>
 </html>
 
